@@ -1,0 +1,15 @@
+---
+title: "data cleaning"
+format: html
+---
+
+```{r} 
+#load in packages
+install.packages("readxl")
+library(readxl)
+
+#load in dataset
+global = read_excel("NY_GDP_PCAP.xlsx")
+
+
+```
