@@ -8,8 +8,46 @@ format: html
 install.packages("readxl")
 library(readxl)
 
+install.packages("rlang")
+library(rlang)
+
+install.packages("dplyr")
+library(dplyr)
+
 #load in dataset
 global = read_excel("NY_GDP_PCAP.xlsx")
 
+```
+
+```{r}
+#remove unecessary columns
+global = global[, c(-4, -6, -10)]
+
+#replace values
+global = global %>%
+  mutate(
+    Goal = case_when(
+      Goal == 8 ~ "Decent Work & Economic Growth",
+      TRUE ~ as.character(Goal)
+    ),
+    Target = case_when(
+      Target == "8.1" ~ "Sustainable Economic Growth",
+      TRUE ~ Target
+    ),
+    Indicator = case_when(
+      Indicator == "8.1.1" ~ "Real GDP per capita growth rate",
+      TRUE ~ Indicator
+    ),
+    `Reporting Type` = case_when(
+      `Reporting Type` == "G" ~ "Global",
+      TRUE ~ `Reporting Type`
+    )
+  )
+
+#rename column
+global = global %>%
+    rename(
+        `Area Name` = GeoAreaName
+    )
 
 ```
