@@ -51,3 +51,8 @@ global = global %>%
     )
 
 ```
+
+```{r}
+#save cleaned dataset as new csv file
+write.csv(global, "final.csv", row.names = FALSE)
+```
