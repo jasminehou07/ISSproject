@@ -14,6 +14,9 @@ library(rlang)
 install.packages("dplyr")
 library(dplyr)
 
+install.packages("readr")
+library(readr)
+
 #load in dataset
 global = read_excel("NY_GDP_PCAP.xlsx")
 
@@ -54,5 +57,5 @@ global = global %>%
 
 ```{r}
 #save cleaned dataset as new csv file
-write.csv(global, "final.csv", row.names = FALSE)
+write_csv(global, "output.csv")
 ```
